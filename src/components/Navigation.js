@@ -17,7 +17,6 @@ export default function Navigation() {
             ):(
               <Link to="/" className='text-light text-decoration-none fw-bolder text-uppercase'>LogIn</Link>
             )}
-            
           </Nav>
       </Navbar>
     </>

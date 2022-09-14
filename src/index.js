@@ -1,7 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { CombinedProvider } from "./context";
 import { makeServer } from "./server";
