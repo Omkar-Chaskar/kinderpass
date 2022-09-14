@@ -4,17 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import { CombinedProvider } from "./context";
+import { makeServer } from "./server";
+// Call make Server
+makeServer();
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+ReactDOM.render(
     <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+      <CombinedProvider>
+        <App />
+      </CombinedProvider>
+    </BrowserRouter>,
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
