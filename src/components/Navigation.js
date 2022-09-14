@@ -10,8 +10,8 @@ export default function Navigation() {
   return (
     <>
       <Navbar bg="primary" variant="dark">
-        <Container className='m-0 d-flex justify-content-between'>
-          <Navbar.Brand href=""><h1>Navbar</h1></Navbar.Brand>
+        <Container className='m-auto d-flex justify-content-between'>
+          <Link to="/" className='d-flex align-items-center'><Navbar.Brand><h1>KinderPass</h1></Navbar.Brand></Link>
           <Nav>
             {loginStatus ? (
               <button className='btn btn-primary fw-bolder text-uppercase'
@@ -19,7 +19,6 @@ export default function Navigation() {
             ):(
               <Link to="/" className='text-light text-decoration-none fw-bolder text-uppercase'>LogIn</Link>
             )}
-            
           </Nav>
         </Container>
       </Navbar>
