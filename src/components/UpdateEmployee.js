@@ -3,13 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEmployes } from "../context";
+import { ConfirmationModel } from "./ConfirmationModel";
 
 export function UpdateEmployee(props) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
   
-    const { state, dispatch, updateEmployeeHandler } = useEmployes();
+    const { state, dispatch } = useEmployes();
   return (
     <>
       <div className="d-flex justify-content-end">
@@ -123,14 +124,7 @@ export function UpdateEmployee(props) {
           }}>
             Close
           </Button>
-          <Button variant="primary"
-          onClick={() => {
-            updateEmployeeHandler(state ,state._id);
-            dispatch({ type: "CLEAR_EMPLOYEE" });
-            handleClose();
-          }}>
-            Save
-          </Button>
+          <ConfirmationModel btn="updateEmployee" state={state} id={state._id} msg="Update employee details."/>
         </Modal.Footer>
       </Modal>
     </>

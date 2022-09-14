@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button } from "react-bootstrap";
 import { AddEmployee } from "./AddEmployee";
 import { UpdateEmployee } from './UpdateEmployee';
 import { useEmployes } from '../context';
 import { Toasters } from "./Toasters";
+import { ConfirmationModel } from './ConfirmationModel';
 
 export default function Home() {
-  const { employes ,trashEmployeeHandler} = useEmployes();
+  const { employes } = useEmployes();
 
   return (
-    <div className="container d-flex flex-column justify-content-center">
+    <div className="d-flex flex-column justify-content-between">
       <AddEmployee />
   <table className="table text-center">
   <thead>
@@ -30,15 +30,14 @@ export default function Home() {
       return (
         <tr key={employee._id}>
           <th scope="row">{employee._id}</th>
-          <td>{employee.firstname}</td>
-          <td>{employee.lastname}</td>
-          <td>{employee.address}</td>
-          <td>{employee.city}</td>
-          <td>{employee.dateofbirth}</td>
-          <td>{employee.number}</td>
+          <td className='fw-semibold'>{employee.firstname}</td>
+          <td className='fw-semibold'>{employee.lastname}</td>
+          <td className='fw-semibold'>{employee.address}</td>
+          <td className='fw-semibold'>{employee.city}</td>
+          <td className='fw-semibold'>{employee.dateofbirth}</td>
+          <td className='fw-semibold'>{employee.number}</td>
           <td>
-            <Button variant="danger" size="sm" className='m-1'
-            onClick={() => trashEmployeeHandler(employee, employee._id)}>Remove</Button>
+            <ConfirmationModel btn="removeEmployee" employee={employee} id={employee._id} msg="Remove employee details." name="Remove"/>
           </td>
           <td>
             <UpdateEmployee employee={employee}/>

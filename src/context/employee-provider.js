@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 const EmployesContext = createContext()
 
 const EmployesProvider = ({children}) => {
+  
+
   const navigateTo = useNavigate();
   const [employes , setEmployes] = useState([]);
     const [state , dispatch] = useReducer(reducer , {
@@ -19,6 +21,7 @@ const EmployesProvider = ({children}) => {
       number: ""
     })
 
+    
     useEffect(() => {
       (async () => {
         try {
@@ -29,7 +32,6 @@ const EmployesProvider = ({children}) => {
           });
           setEmployes(data.employes)
         } catch (err) {
-          toast("Something went wrong: Loading Employee Data Failed");
           console.error(err);
         }
       })();
@@ -40,6 +42,7 @@ const EmployesProvider = ({children}) => {
       if (status === 201) {
         setEmployes(data.employes);
         navigateTo("/");
+        toast("Employee Added Succesfully");
       }
     };
 
@@ -48,14 +51,16 @@ const EmployesProvider = ({children}) => {
       if (status === 201) {
         setEmployes(data.employes);
         navigateTo("/");
+        toast("Employee Updated Succesfully");
       }
     };
 
     const trashEmployeeHandler = async (employee , _id) => {
         const { data, status } = await trashEmployee(employee , _id);
-        if (status === 201) {
+        if (status === 200) {
           setEmployes(data.employes);
           navigateTo("/");
+          toast("Employee Removed Succesfully");
         }
       };
 

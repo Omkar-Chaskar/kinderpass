@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
       <Navigation />
-      <Container className="d-grid h-100 container justify-content-center m-auto p-2">
+      <Container className="d-grid h-100 justify-content-center m-auto p-2">
         {loginStatus ? (
           <Routes>
           <Route path="/" element={<Home />} />
