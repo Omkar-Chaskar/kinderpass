@@ -1,4 +1,3 @@
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
@@ -9,9 +8,8 @@ export default function Navigation() {
   const { loginStatus } = user;
   return (
     <>
-      <Navbar bg="primary" variant="dark">
-        <Container className='m-0 d-flex justify-content-between'>
-          <Navbar.Brand href=""><h1>Navbar</h1></Navbar.Brand>
+      <Navbar bg="primary" variant="dark" className='px-3 d-flex justify-content-between'>
+          <Navbar.Brand href=""><h1>KinderPass</h1></Navbar.Brand>
           <Nav>
             {loginStatus ? (
               <button className='btn btn-primary fw-bolder text-uppercase'
@@ -21,7 +19,6 @@ export default function Navigation() {
             )}
             
           </Nav>
-        </Container>
       </Navbar>
     </>
   )

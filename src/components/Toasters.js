@@ -5,7 +5,7 @@ export const Toasters = () => {
   return (
     <>
     <Toaster
-      position="top-center"
+      position="bottom-right"
       reverseOrder={false}
       gutter={8}
       containerClassName=""

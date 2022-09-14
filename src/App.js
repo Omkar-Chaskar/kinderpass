@@ -14,7 +14,6 @@ function App() {
   return (
     <div>
       <Navigation />
-      <Container className="d-grid h-100 container-lg">
       <Container className="d-grid h-100 container justify-content-center m-auto p-2">
         {loginStatus ? (
           <Routes>

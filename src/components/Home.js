@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { AddEmployee } from "./AddEmployee";
 import { UpdateEmployee } from './UpdateEmployee';
 import { useEmployes } from '../context';
+import { Toasters } from "./Toasters";
 
 export default function Home() {
   const { employes ,trashEmployeeHandler} = useEmployes();
@@ -46,6 +47,7 @@ export default function Home() {
     })}
   </tbody>
 </table>
+<Toasters />
 </div>
   )
 }
