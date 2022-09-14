@@ -1,16 +1,16 @@
 import React from 'react';
 import { Button } from "react-bootstrap";
+import { AddEmployee } from "./AddEmployee";
+import { UpdateEmployee } from './UpdateEmployee';
+import { useEmployes } from '../context';
+import { Toasters } from "./Toasters";
 
 export default function Home() {
+  const { employes ,trashEmployeeHandler} = useEmployes();
+
   return (
     <div className="container d-flex flex-column justify-content-center">
-
-        <div className='d-flex justify-content-end'>
-        <Button variant="primary" size="md" className='m-2'>
-            Add
-          </Button>
-        </div>
-
+      <AddEmployee />
   <table className="table text-center">
   <thead>
     <tr>
@@ -26,23 +26,28 @@ export default function Home() {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Omkar</td>
-      <td>Chaskar</td>
-      <td>Alandi road, Bhosary</td>
-      <td>Pune</td>
-      <td>14/02/1999</td>
-      <td>9075745224</td>
-      <td>
-        <Button variant="danger" size="sm" className='m-1'>Remove</Button>
-      </td>
-      <td>
-        <Button variant="primary" size="sm" className='m-1'>Edit</Button>
-      </td>
-    </tr>
+    {employes.map((employee) => {
+      return (
+        <tr key={employee._id}>
+          <th scope="row">{employee._id}</th>
+          <td>{employee.firstname}</td>
+          <td>{employee.lastname}</td>
+          <td>{employee.address}</td>
+          <td>{employee.city}</td>
+          <td>{employee.dateofbirth}</td>
+          <td>{employee.number}</td>
+          <td>
+            <Button variant="danger" size="sm" className='m-1'
+            onClick={() => trashEmployeeHandler(employee, employee._id)}>Remove</Button>
+          </td>
+          <td>
+            <UpdateEmployee employee={employee}/>
+          </td>
+        </tr>)
+    })}
   </tbody>
 </table>
+<Toasters />
 </div>
   )
 }

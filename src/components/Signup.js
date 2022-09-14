@@ -1,17 +1,31 @@
-import React from "react";
 import { Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { initialSignUpData } from "../utils/constantData/authConstant";
+import { useAuth } from "../context";
+import { Toasters } from "./Toasters";
 
 export default function Signup() {
+  const [signUpData, setSignUpData] = useState(initialSignUpData);
+  const { signUpHandler } = useAuth();
+
+  const signupChangeHandler = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setSignUpData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
   return (
-      <Form className="text-center w-100"  id="main-container">
+      <Form className="text-center w-100"  id="main-container" onSubmit={(e) => e.preventDefault()}>
         <h1 className="mb-3 fs-3 fw-normal">Sign Up</h1>
         <Form.Group controlId="sign-in-email-address">
           <Form.Control
             type="email"
             size="lg"
             placeholder="Email address"
-            autoComplete="username"
             className="position-relative mt-1"
+            name="email"
+            onChange={signupChangeHandler}
+            required
           />
         </Form.Group>
         <Form.Group controlId="sign-in-first-name">
@@ -19,8 +33,10 @@ export default function Signup() {
             type="text"
             size="lg"
             placeholder="First Name"
-            autoComplete="firstname"
             className="position-relative mt-1"
+            name="firstname"
+            onChange={signupChangeHandler}
+            required
           />
         </Form.Group>
         <Form.Group controlId="sign-in-last-name">
@@ -28,8 +44,10 @@ export default function Signup() {
             type="text"
             size="lg"
             placeholder="Last Name"
-            autoComplete="lastname"
             className="position-relative mt-1"
+            name="lastname"
+            onChange={signupChangeHandler}
+            required
           />
         </Form.Group>
         <Form.Group controlId="sign-in-password">
@@ -37,8 +55,10 @@ export default function Signup() {
             type="password"
             size="lg"
             placeholder="Enter Password"
-            autoComplete="current password"
             className="position-relative mt-1"
+            name="password"
+            onChange={signupChangeHandler}
+            required
           />
         </Form.Group>
         <Form.Group controlId="sign-in-re-enter-password">
@@ -46,8 +66,10 @@ export default function Signup() {
             type="password"
             size="lg"
             placeholder="Confirm Password"
-            autoComplete="secondary password"
             className="position-relative mt-1"
+            name="cofirmpassword"
+            onChange={signupChangeHandler}
+            required
           />
         </Form.Group>
         <Form.Group controlId="sign-in-address">
@@ -55,8 +77,10 @@ export default function Signup() {
             type="text"
             size="lg"
             placeholder="Address"
-            autoComplete="address"
             className="position-relative mt-1"
+            name="address"
+            onChange={signupChangeHandler}
+            required
           />
         </Form.Group>
         <Form.Group controlId="sign-in-company-name">
@@ -64,8 +88,10 @@ export default function Signup() {
             type="text"
             size="lg"
             placeholder="Company Name"
-            autoComplete="companyname"
             className="position-relative mt-1"
+            name="company"
+            onChange={signupChangeHandler}
+            required
           />
         </Form.Group>
         <Form.Group controlId="sign-in-date-of-birth">
@@ -73,13 +99,19 @@ export default function Signup() {
             type="date"
             size="lg"
             className="position-relative mt-1"
+            name="datofbirth"
+            onChange={signupChangeHandler}
+            required
           />
         </Form.Group>
         <div className="d-grid mt-3">
-          <Button variant="primary" size="lg">
+          <Button variant="primary" size="lg" type="submit" onClick={(e) => {
+                signUpHandler(signUpData);
+              }}>
             Sign Up
           </Button>
         </div>
+        < Toasters />
       </Form>
   );
 }

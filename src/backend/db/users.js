@@ -14,7 +14,7 @@ export const users = [
     password: "test@123",
     address: "alandi road, bhosari, pune",
     company: "Kinderpass",
-    dob: "14/02/1999",
+    dateofbirth: "14/02/1999",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

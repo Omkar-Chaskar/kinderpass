@@ -40,10 +40,10 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/auth/login", loginHandler.bind(this));
 
       // notes routes (private)
-      this.get("/notes", getAllEmployesHandler.bind(this));
-      this.post("/notes", createEmployesHandler.bind(this));
-      this.post("/notes/:noteId", updateEmployesHandler.bind(this));
-      this.delete("/notes/:noteId", deleteEmployesHandler.bind(this));
+      this.get("/employes", getAllEmployesHandler.bind(this));
+      this.post("/employes", createEmployesHandler.bind(this));
+      this.post("/employes/:employeeId", updateEmployesHandler.bind(this));
+      this.delete("/employes/:employeeId", deleteEmployesHandler.bind(this));
     },
   });
   return server;
