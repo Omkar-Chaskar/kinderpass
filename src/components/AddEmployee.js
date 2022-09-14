@@ -3,13 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useEmployes } from "../context";
+import { ConfirmationModel } from "./ConfirmationModel";
 
 export function AddEmployee() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { state, dispatch, addNewEmployeeHandler } = useEmployes();
+  const { state, dispatch} = useEmployes();
 
   return (
     <>
@@ -17,8 +18,8 @@ export function AddEmployee() {
         <Button
           variant="primary"
           onClick={handleShow}
-          size="md"
-          className="m-2"
+          size="lg"
+          className="my-1"
         >
           Add
         </Button>
@@ -128,14 +129,7 @@ export function AddEmployee() {
           }}>
             Close
           </Button>
-          <Button variant="primary"
-          onClick={() => {
-            addNewEmployeeHandler(state);
-            dispatch({ type: "CLEAR_EMPLOYEE" });
-            handleClose();
-          }}>
-            Save
-          </Button>
+          <ConfirmationModel btn="newEmployee" state={state} msg="Add new employee details."/>
         </Modal.Footer>
       </Modal>
     </>
