@@ -5,7 +5,6 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { CombinedProvider } from "./context";
-import { makeServer } from "./server";
 // Call make Server
 makeServer();
 
