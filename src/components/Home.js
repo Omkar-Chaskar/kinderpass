@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 
 export default function Home() {
   return (
-    <div className="container">
+    <div className="container d-flex flex-column justify-content-center">
 
         <div className='d-flex justify-content-end'>
         <Button variant="primary" size="md" className='m-2'>

@@ -10,10 +10,10 @@ function App() {
   return (
     <div>
       <Navigation />
-      <Container className="d-grid h-100 container-lg">
+      <Container className="d-grid h-100 container justify-content-center m-auto p-2">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="signip" element={<Signup />} />
+          <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
         </Routes>
       </Container>
